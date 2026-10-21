@@ -1,29 +1,3 @@
-"""
-locustfile.py — Avaliação de Desempenho do Spring PetClinic Microservices
-Trabalho Prático 06
-
-Implementa os dois perfis de carga exigidos (Leitura e Escrita), com os
-pesos definidos no enunciado, e descarta automaticamente o período de
-aquecimento (warm-up) das estatísticas finais via reset de stats do Locust.
-
-Como escolher o perfil:
-    LOAD_PROFILE=leitura   -> Perfil 1 (padrão)
-    LOAD_PROFILE=escrita   -> Perfil 2
-
-Como ajustar o alvo e o aquecimento:
-    BASE_URL (padrão: http://localhost:8080)       -> URL do api-gateway
-    WARMUP_SECONDS (padrão: 60)                     -> duração do aquecimento
-
-Os endpoints abaixo foram verificados nas rotas do api-gateway do
-Spring PetClinic Microservices (Spring Cloud Gateway, StripPrefix=2):
-    GET  /api/customer/owners
-    GET  /api/customer/owners/{id}
-    GET  /api/vet/vets
-    POST /api/customer/owners
-Confira se a versão que você clonou usa as mesmas rotas antes de rodar
-os experimentos de verdade (seção 1 do enunciado pede essa checagem).
-"""
-
 import os
 import random
 import gevent
@@ -122,15 +96,6 @@ class PetClinicUser(HttpUser):
             json=_random_owner_payload(),
             name="POST /api/customer/owners",
         )
-
-
-# --------------------------------------------------------------------------
-# Descarte do aquecimento: zera as estatísticas acumuladas após
-# WARMUP_SECONDS, para que o CSV final (--csv) reflita apenas a janela de
-# medição (ex.: 6 min), conforme exigido no enunciado. Rode o teste com
-# --run-time = WARMUP_SECONDS + duração_de_medição (ex.: 7m para 1 min de
-# aquecimento + 6 min de medição).
-# --------------------------------------------------------------------------
 
 @events.test_start.add_listener
 def _schedule_warmup_reset(environment, **kwargs):
