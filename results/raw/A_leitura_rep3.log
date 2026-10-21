@@ -1,0 +1,28 @@
+[2026-10-21 00:17:50,059] Aspire5/INFO/locust.main: Starting Locust 2.46.7
+[2026-10-21 00:17:50,063] Aspire5/INFO/locust.main: Run time limit set to 420 seconds
+[2026-10-21 00:17:50,065] Aspire5/INFO/locust.runners: Ramping to 30 users at a rate of 3.00 per second
+[2026-10-21 00:17:59,157] Aspire5/INFO/locust.runners: All users spawned: {"PetClinicUser": 30} (30 total users)
+[2026-10-21 00:24:49,330] Aspire5/INFO/locust.main: --run-time limit reached, shutting down
+[2026-10-21 00:24:49,529] Aspire5/INFO/locust.main: Shutting down (exit code 0)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+GET      GET /api/customer/owners                                                        2363     0(0.00%) |    111      69     694    100 |    6.57        0.00
+GET      GET /api/customer/owners (on_start)                                                0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+GET      GET /api/customer/owners/[id]                                                   1858     0(0.00%) |      7       4     177      7 |    5.17        0.00
+GET      GET /api/vet/vets                                                                777     0(0.00%) |      9       6      63      8 |    2.16        0.00
+POST     POST /api/customer/owners                                                        254     0(0.00%) |     31       6     163     46 |    0.71        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                      5252     0(0.00%) |     55       4     694     13 |   14.61        0.00
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+GET      GET /api/customer/owners                                                              100    110    120    120    140    170    220    290    570    690    690   2363
+GET      GET /api/customer/owners/[id]                                                           7      7      7      8      9     12     17     23    120    180    180   1858
+GET      GET /api/vet/vets                                                                       8      9      9     10     12     14     28     40     64     64     64    777
+POST     POST /api/customer/owners                                                              46     48     49     50     51     52     54     67    160    160    160    254
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                             13     93    100    110    120    130    180    220    510    690    690   5252
+
+[start] Perfil=leitura | host=None | warmup=60s
+[warmup] 60s decorridos — estatísticas resetadas, iniciando janela de medição (perfil=leitura).

@@ -1,0 +1,7 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/customer/owners,"ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None)",1,2026-10-21T05:33:25Z,2026-10-21T05:33:25Z
+GET,GET /api/customer/owners/[id],HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners/[id]'),4088,2026-10-21T05:33:16Z,2026-10-21T05:39:15Z
+POST,POST /api/customer/owners,HTTPError('503 Server Error: Service Unavailable for url: POST /api/customer/owners'),564,2026-10-21T05:33:16Z,2026-10-21T05:39:15Z
+GET,GET /api/vet/vets,HTTPError('405 Client Error: Method Not Allowed for url: GET /api/vet/vets'),1683,2026-10-21T05:33:16Z,2026-10-21T05:39:16Z
+GET,GET /api/customer/owners/[id],"ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None)",3,2026-10-21T05:33:25Z,2026-10-21T05:33:58Z
+GET,GET /api/customer/owners,HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners'),5263,2026-10-21T05:33:16Z,2026-10-21T05:39:15Z

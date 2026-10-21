@@ -1,0 +1,52 @@
+[2026-10-21 03:47:01,837] Aspire5/INFO/locust.main: Starting Locust 2.46.7
+[2026-10-21 03:47:01,843] Aspire5/INFO/locust.main: Run time limit set to 420 seconds
+[2026-10-21 03:47:01,845] Aspire5/INFO/locust.runners: Ramping to 80 users at a rate of 8.00 per second
+[2026-10-21 03:47:10,941] Aspire5/INFO/locust.runners: All users spawned: {"PetClinicUser": 80} (80 total users)
+[2026-10-21 03:54:01,076] Aspire5/INFO/locust.main: --run-time limit reached, shutting down
+[2026-10-21 03:54:01,256] Aspire5/INFO/locust.main: Shutting down (exit code 1)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+GET      GET /api/customer/owners                                                        5287 5264(99.56%) |    568       2   10202      5 |   14.72       14.65
+GET      GET /api/customer/owners (on_start)                                                0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+GET      GET /api/customer/owners/[id]                                                   4099 4052(98.85%) |    468       3   10205      5 |   11.41       11.28
+GET      GET /api/vet/vets                                                               1757 1650(93.91%) |      6       3     156      5 |    4.89        4.59
+POST     POST /api/customer/owners                                                        553  545(98.55%) |    535       3    9625     45 |    1.54        1.52
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                     11696 11511(98.42%) |    447       2   10205      5 |   32.56       32.04
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+GET      GET /api/customer/owners                                                                5      5      6      7     13   9300   9400   9900  10000  10000  10000   5287
+GET      GET /api/customer/owners/[id]                                                           5      5      6      7     12    180   9400   9500  10000  10000  10000   4099
+GET      GET /api/vet/vets                                                                       5      5      6      7      9     13     16     19     90    160    160   1757
+POST     POST /api/customer/owners                                                              45     47     48     49     52   9300   9400   9500   9600   9600   9600    553
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                              5      6      7      8     18     64   9400   9500  10000  10000  10000  11696
+
+Error report
+# occurrences      Error                                                                                               
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+5264               GET GET /api/customer/owners: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners')
+4052               GET GET /api/customer/owners/[id]: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners/[id]')
+1650               GET GET /api/vet/vets: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/vet/vets') 
+545                POST POST /api/customer/owners: HTTPError('503 Server Error: Service Unavailable for url: POST /api/customer/owners')
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "src/gevent/greenlet.py", line 912, in gevent._gevent_cgreenlet.Greenlet.run
+  File "C:\Users\samue\OneDrive\Desktop\UFPI\6 Periodo\Sistemas Distribuidos\Trabalhos\Trabalho06\locust-performace\.venv\Lib\site-packages\locust\stats.py", line 1170, in stats_writer
+    self.requests_csv_filehandle.seek(requests_csv_data_start)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+2026-10-21T06:54:01Z <Greenlet at 0x1730290b6a0: <bound method StatsCSVFileWriter.stats_writer of <locust.stats.StatsCSVFileWriter object at 0x0000017302918EC0>>> failed with ValueError
+
+[2026-10-21 03:54:01,272] Aspire5/CRITICAL/locust.main: Unhandled exception in greenlet: <Greenlet at 0x1730290b6a0: <bound method StatsCSVFileWriter.stats_writer of <locust.stats.StatsCSVFileWriter object at 0x0000017302918EC0>>>
+Traceback (most recent call last):
+  File "src/gevent/greenlet.py", line 912, in gevent._gevent_cgreenlet.Greenlet.run
+  File "C:\Users\samue\OneDrive\Desktop\UFPI\6 Periodo\Sistemas Distribuidos\Trabalhos\Trabalho06\locust-performace\.venv\Lib\site-packages\locust\stats.py", line 1170, in stats_writer
+    self.requests_csv_filehandle.seek(requests_csv_data_start)
+    ^^^^^^^
+ValueError: I/O operation on closed file.
+[start] Perfil=leitura | host=None | warmup=60s
+[warmup] 60s decorridos — estatísticas resetadas, iniciando janela de medição (perfil=leitura).

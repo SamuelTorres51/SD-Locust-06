@@ -1,0 +1,39 @@
+[2026-10-21 02:32:16,823] Aspire5/INFO/locust.main: Starting Locust 2.46.7
+[2026-10-21 02:32:16,829] Aspire5/INFO/locust.main: Run time limit set to 420 seconds
+[2026-10-21 02:32:16,831] Aspire5/INFO/locust.runners: Ramping to 80 users at a rate of 8.00 per second
+[2026-10-21 02:32:25,903] Aspire5/INFO/locust.runners: All users spawned: {"PetClinicUser": 80} (80 total users)
+[2026-10-21 02:39:16,054] Aspire5/INFO/locust.main: --run-time limit reached, shutting down
+[2026-10-21 02:39:16,335] Aspire5/INFO/locust.main: Shutting down (exit code 1)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+GET      GET /api/customer/owners                                                        5299 5264(99.34%) |    546       2   30026      5 |   14.74       14.65
+GET      GET /api/customer/owners (on_start)                                                0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+GET      GET /api/customer/owners/[id]                                                   4168 4091(98.15%) |    448       3   30021      5 |   11.60       11.38
+GET      GET /api/vet/vets                                                               1787 1683(94.18%) |      5       3      21      5 |    4.97        4.68
+POST     POST /api/customer/owners                                                        571  565(98.95%) |    624       4    9486     45 |    1.59        1.57
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                     11825 11603(98.12%) |    433       2   30026      5 |   32.90       32.28
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+GET      GET /api/customer/owners                                                                5      5      6      6     10   9400   9400   9400   9400  30000  30000   5299
+GET      GET /api/customer/owners/[id]                                                           5      5      6      6     10    110   9400   9400   9400  30000  30000   4168
+GET      GET /api/vet/vets                                                                       5      5      6      6      8     10     14     16     22     22     22   1787
+POST     POST /api/customer/owners                                                              45     46     47     48     51   9400   9500   9500   9500   9500   9500    571
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                              5      5      6      7     16     54   9400   9400   9500  30000  30000  11825
+
+Error report
+# occurrences      Error                                                                                               
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+1683               GET GET /api/vet/vets: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/vet/vets') 
+5263               GET GET /api/customer/owners: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners')
+565                POST POST /api/customer/owners: HTTPError('503 Server Error: Service Unavailable for url: POST /api/customer/owners')
+4088               GET GET /api/customer/owners/[id]: HTTPError('405 Client Error: Method Not Allowed for url: GET /api/customer/owners/[id]')
+3                  GET GET /api/customer/owners/[id]: ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None)
+1                  GET GET /api/customer/owners: ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None)
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+
+[start] Perfil=leitura | host=None | warmup=60s
+[warmup] 60s decorridos — estatísticas resetadas, iniciando janela de medição (perfil=leitura).
