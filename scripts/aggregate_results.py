@@ -1,21 +1,3 @@
-#!/usr/bin/env python3
-"""
-aggregate_results.py — Consolida os CSVs gerados pelas 60 execuções
-(3 cenários x 2 perfis x 10 repetições), descarta o período de
-aquecimento (já descartado nas stats do Locust, ver locustfile.py) e
-calcula as médias das 10 repetições de cada configuração.
-
-Gera:
-  results/processed/per_run.csv      -> uma linha por execução (60 linhas)
-  results/processed/summary.csv      -> uma linha por configuração (6 linhas),
-                                         já com a média das 10 repetições
-  results/processed/summary.md       -> mesma tabela em Markdown, pronta
-                                         para colar no README.md
-
-Uso:
-    python3 scripts/aggregate_results.py
-"""
-
 import csv
 import glob
 import os

@@ -1,0 +1,7 @@
+scenario,users,profile,n_repeticoes,avg_response_ms,p95_ms,throughput_rps,request_count,failure_count,failure_rate_pct,cpu_customers-service_pct,cpu_vets-service_pct
+A,30,escrita,10,1735.35,4418.0,9.38,3366.2,58.6,3.57,314.05,1.02
+A,30,leitura,10,95.37,259.0,14.27,5122.9,0,0.0,118.35,1.5
+B,80,escrita,10,411.94,60.3,33.09,11878.4,11682.7,98.35,175.57,0.49
+B,80,leitura,10,431.65,116.4,32.83,11790.5,11582.8,98.24,165.65,0.51
+C,150,escrita,10,287.21,44.8,65.48,23499.6,23281.9,99.07,147.09,0.53
+C,150,leitura,10,303.05,45.1,64.99,23318.5,23083.1,98.99,145.96,0.52

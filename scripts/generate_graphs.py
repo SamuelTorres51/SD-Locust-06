@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-"""
-generate_graphs.py — Gera os gráficos comparativos exigidos na seção 4
-do enunciado, a partir de results/processed/summary.csv.
-
-Gráficos gerados em results/graphs/:
-  - tempo_resposta.png   (tempo médio e P95 por cenário, por perfil)
-  - vazao.png            (req/s por cenário, por perfil)
-  - taxa_falhas.png      (taxa de falhas por cenário, por perfil)
-  - cpu_servicos.png     (uso médio de CPU por cenário, por serviço)
-
-Uso:
-    python3 scripts/generate_graphs.py
-"""
-
 import csv
 import os
 
