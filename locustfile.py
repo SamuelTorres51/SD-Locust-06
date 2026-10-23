@@ -4,14 +4,9 @@ import gevent
 
 from locust import HttpUser, task, between, events
 
-# --------------------------------------------------------------------------
-# Configuração geral
-# --------------------------------------------------------------------------
-
 LOAD_PROFILE = os.environ.get("LOAD_PROFILE", "leitura").strip().lower()
 WARMUP_SECONDS = int(os.environ.get("WARMUP_SECONDS", "60"))
 
-# Pesos dos dois perfis, exatamente como especificados no enunciado.
 # (GET /owners, GET /owners/{id}, GET /vets, POST /owners)
 PROFILE_WEIGHTS = {
     "leitura": {"list_owners": 45, "get_owner": 35, "list_vets": 15, "create_owner": 5},
@@ -25,9 +20,6 @@ if LOAD_PROFILE not in PROFILE_WEIGHTS:
 
 WEIGHTS = PROFILE_WEIGHTS[LOAD_PROFILE]
 
-# IDs de owners conhecidos para usar em GET /owners/{id}. São preenchidos
-# dinamicamente a partir da primeira chamada em list_owners (on_start),
-# com fallback para os IDs de seed padrão do PetClinic (1-10).
 _SEED_OWNER_IDS = list(range(1, 11))
 
 # Nomes/sobrenomes para gerar POST /owners com dados variados (evita que
@@ -48,10 +40,6 @@ def _random_owner_payload():
 
 
 class PetClinicUser(HttpUser):
-    """
-    Usuário simulado para o perfil de carga selecionado via LOAD_PROFILE.
-    O tempo de espera entre tarefas simula um usuário real navegando.
-    """
 
     host = os.environ.get("BASE_URL", "http://localhost:8080")
     wait_time = between(1, 3)

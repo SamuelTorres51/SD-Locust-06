@@ -1,10 +1,3 @@
-#!/usr/bin/env bash
-# run_single.sh — Executa UMA repetição de um cenário/perfil contra o
-# Spring PetClinic Microservices e salva os CSVs do Locust e o CSV de CPU.
-#
-# Uso:
-#   ./run_single.sh <cenario:A|B|C> <perfil:leitura|escrita> <repeticao:1-10> [base_url]
-#
 # Exemplo:
 #   ./run_single.sh A leitura 1
 #   ./run_single.sh C escrita 10 http://localhost:8080
@@ -93,15 +86,6 @@ echo "=== Executando ${RUN_ID} | usuários=${USERS} | spawn_rate=${SPAWN_RATE} |
 bash "${SCRIPT_DIR}/monitor_cpu.sh" "$CPU_CSV" $((TOTAL_SECONDS + 10)) "${CONTAINERS[@]}" &
 MONITOR_PID=$!
 
-# Executa o Locust headless. WARMUP_SECONDS é lido pelo locustfile.py,
-# que reseta as estatísticas após esse tempo — o CSV final conterá
-# apenas a janela de medição de 6 minutos.
-#
-# Importante: o Locust sai com código != 0 quando há requisições com
-# falha. Isso é um RESULTADO ESPERADO do experimento (a taxa de falhas
-# é uma das métricas pedidas), não um erro de script — por isso
-# desligamos "set -e" só para esta chamada, para não abortar a bateria
-# inteira por causa de uma falha isolada em algum cenário de carga alta.
 set +e
 LOAD_PROFILE="$PROFILE" \
 WARMUP_SECONDS="$WARMUP_SECONDS" \

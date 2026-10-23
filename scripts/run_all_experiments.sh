@@ -1,13 +1,3 @@
-#!/usr/bin/env bash
-# run_all_experiments.sh — Orquestra as 60 execuções exigidas:
-#   3 cenários (A, B, C) x 2 perfis (leitura, escrita) x 10 repetições.
-#
-# Pré-requisitos: aplicação já em execução (docker compose up -d) e
-# acessível em BASE_URL (padrão http://localhost:8080).
-#
-# Uso:
-#   ./run_all_experiments.sh [base_url]
-
 set -euo pipefail
 
 BASE_URL="${1:-http://localhost:8080}"
